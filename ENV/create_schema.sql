@@ -1,0 +1,3 @@
+DROP SCHEMA IF EXISTS kerberos;
+CREATE SCHEMA kerberos
+  AUTHORIZATION postgres;

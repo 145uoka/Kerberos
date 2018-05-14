@@ -1,0 +1,17 @@
+map:{
+    ; 2018/05/15 00:11:25 = map:{
+        ; diffDate = 2018/05/15 00:11:25
+        ; tableDiff = map:{
+            ; line_property_m = map:{
+                ; tableName = line_property_m
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; grant_type = map:{
+                        ; columnName = grant_type
+                        ; diffType = ADD
+                    }
+                }
+            }
+        }
+    }
+}
