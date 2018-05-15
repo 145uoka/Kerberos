@@ -18,7 +18,7 @@ import com.kerberos.dbflute.exentity.*;
  *     line_prop_id
  *
  * [column]
- *     line_prop_id, app_key, response_type, client_id, redirect_uri, state_val, scope_val, nonce, prompt, bot_prompt, delete_flag, register_datetime, update_datetime, client_secret, grant_type
+ *     line_prop_id, app_key, response_type, client_id, redirect_uri, scope_val, nonce, prompt, bot_prompt, client_secret, grant_type, delete_flag, register_datetime, update_datetime
  *
  * [sequence]
  *     line_property_m_line_prop_id_seq
@@ -48,31 +48,29 @@ import com.kerberos.dbflute.exentity.*;
  * String responseType = entity.getResponseType();
  * String clientId = entity.getClientId();
  * String redirectUri = entity.getRedirectUri();
- * String stateVal = entity.getStateVal();
  * String scopeVal = entity.getScopeVal();
  * String nonce = entity.getNonce();
  * String prompt = entity.getPrompt();
  * String botPrompt = entity.getBotPrompt();
+ * String clientSecret = entity.getClientSecret();
+ * String grantType = entity.getGrantType();
  * Boolean deleteFlag = entity.getDeleteFlag();
  * java.time.LocalDateTime registerDatetime = entity.getRegisterDatetime();
  * java.time.LocalDateTime updateDatetime = entity.getUpdateDatetime();
- * String clientSecret = entity.getClientSecret();
- * String grantType = entity.getGrantType();
  * entity.setLinePropId(linePropId);
  * entity.setAppKey(appKey);
  * entity.setResponseType(responseType);
  * entity.setClientId(clientId);
  * entity.setRedirectUri(redirectUri);
- * entity.setStateVal(stateVal);
  * entity.setScopeVal(scopeVal);
  * entity.setNonce(nonce);
  * entity.setPrompt(prompt);
  * entity.setBotPrompt(botPrompt);
+ * entity.setClientSecret(clientSecret);
+ * entity.setGrantType(grantType);
  * entity.setDeleteFlag(deleteFlag);
  * entity.setRegisterDatetime(registerDatetime);
  * entity.setUpdateDatetime(updateDatetime);
- * entity.setClientSecret(clientSecret);
- * entity.setGrantType(grantType);
  * = = = = = = = = = =/
  * </pre>
  * @author DBFlute(AutoGenerator)
@@ -103,9 +101,6 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
     /** redirect_uri: {NotNull, text(2147483647)} */
     protected String _redirectUri;
 
-    /** state_val: {NotNull, text(2147483647)} */
-    protected String _stateVal;
-
     /** scope_val: {NotNull, text(2147483647)} */
     protected String _scopeVal;
 
@@ -118,20 +113,20 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
     /** bot_prompt: {text(2147483647)} */
     protected String _botPrompt;
 
-    /** delete_flag: {NotNull, bool(1), default=[false]} */
-    protected Boolean _deleteFlag;
-
-    /** register_datetime: {NotNull, timestamp(26, 3), default=[now()]} */
-    protected java.time.LocalDateTime _registerDatetime;
-
-    /** update_datetime: {timestamp(26, 3)} */
-    protected java.time.LocalDateTime _updateDatetime;
-
     /** client_secret: {NotNull, text(2147483647)} */
     protected String _clientSecret;
 
     /** grant_type: {NotNull, text(2147483647), default=['authorization_code。付与タイプを指定します。'::text]} */
     protected String _grantType;
+
+    /** delete_flag: {NotNull, bool(1), default=[false]} */
+    protected Boolean _deleteFlag;
+
+    /** register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]} */
+    protected java.time.LocalDateTime _registerDatetime;
+
+    /** update_datetime: {timestamp(26, 3)} */
+    protected java.time.LocalDateTime _updateDatetime;
 
     // ===================================================================================
     //                                                                             DB Meta
@@ -211,16 +206,15 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
         sb.append(dm).append(xfND(_responseType));
         sb.append(dm).append(xfND(_clientId));
         sb.append(dm).append(xfND(_redirectUri));
-        sb.append(dm).append(xfND(_stateVal));
         sb.append(dm).append(xfND(_scopeVal));
         sb.append(dm).append(xfND(_nonce));
         sb.append(dm).append(xfND(_prompt));
         sb.append(dm).append(xfND(_botPrompt));
+        sb.append(dm).append(xfND(_clientSecret));
+        sb.append(dm).append(xfND(_grantType));
         sb.append(dm).append(xfND(_deleteFlag));
         sb.append(dm).append(xfND(_registerDatetime));
         sb.append(dm).append(xfND(_updateDatetime));
-        sb.append(dm).append(xfND(_clientSecret));
-        sb.append(dm).append(xfND(_grantType));
         if (sb.length() > dm.length()) {
             sb.delete(0, dm.length());
         }
@@ -338,26 +332,6 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [get] state_val: {NotNull, text(2147483647)} <br>
-     * クロスサイトリクエストフォージェリ防止用の固有な英数字の文字列。アプリ側でランダムに生成する必要があります。URLエンコードされた文字列は使用できません。
-     * @return The value of the column 'state_val'. (basically NotNull if selected: for the constraint)
-     */
-    public String getStateVal() {
-        checkSpecifiedProperty("stateVal");
-        return _stateVal;
-    }
-
-    /**
-     * [set] state_val: {NotNull, text(2147483647)} <br>
-     * クロスサイトリクエストフォージェリ防止用の固有な英数字の文字列。アプリ側でランダムに生成する必要があります。URLエンコードされた文字列は使用できません。
-     * @param stateVal The value of the column 'state_val'. (basically NotNull if update: for the constraint)
-     */
-    public void setStateVal(String stateVal) {
-        registerModifiedProperty("stateVal");
-        _stateVal = stateVal;
-    }
-
-    /**
      * [get] scope_val: {NotNull, text(2147483647)} <br>
      * ユーザーが付与する権限。URLエンコードされた空白文字（%20）で区切って、複数のスコープを指定できます。詳しくは、「スコープ」を参照してください。ユーザーが付与する権限。URLエンコードされた空白文字（%20）で区切って、複数のスコープを指定できます。<br>
      * profile：ユーザーのプロフィール情報を取得する権限です。<br>
@@ -444,60 +418,6 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [get] delete_flag: {NotNull, bool(1), default=[false]} <br>
-     * @return The value of the column 'delete_flag'. (basically NotNull if selected: for the constraint)
-     */
-    public Boolean getDeleteFlag() {
-        checkSpecifiedProperty("deleteFlag");
-        return _deleteFlag;
-    }
-
-    /**
-     * [set] delete_flag: {NotNull, bool(1), default=[false]} <br>
-     * @param deleteFlag The value of the column 'delete_flag'. (basically NotNull if update: for the constraint)
-     */
-    public void setDeleteFlag(Boolean deleteFlag) {
-        registerModifiedProperty("deleteFlag");
-        _deleteFlag = deleteFlag;
-    }
-
-    /**
-     * [get] register_datetime: {NotNull, timestamp(26, 3), default=[now()]} <br>
-     * @return The value of the column 'register_datetime'. (basically NotNull if selected: for the constraint)
-     */
-    public java.time.LocalDateTime getRegisterDatetime() {
-        checkSpecifiedProperty("registerDatetime");
-        return _registerDatetime;
-    }
-
-    /**
-     * [set] register_datetime: {NotNull, timestamp(26, 3), default=[now()]} <br>
-     * @param registerDatetime The value of the column 'register_datetime'. (basically NotNull if update: for the constraint)
-     */
-    public void setRegisterDatetime(java.time.LocalDateTime registerDatetime) {
-        registerModifiedProperty("registerDatetime");
-        _registerDatetime = registerDatetime;
-    }
-
-    /**
-     * [get] update_datetime: {timestamp(26, 3)} <br>
-     * @return The value of the column 'update_datetime'. (NullAllowed even if selected: for no constraint)
-     */
-    public java.time.LocalDateTime getUpdateDatetime() {
-        checkSpecifiedProperty("updateDatetime");
-        return _updateDatetime;
-    }
-
-    /**
-     * [set] update_datetime: {timestamp(26, 3)} <br>
-     * @param updateDatetime The value of the column 'update_datetime'. (NullAllowed: null update allowed for no constraint)
-     */
-    public void setUpdateDatetime(java.time.LocalDateTime updateDatetime) {
-        registerModifiedProperty("updateDatetime");
-        _updateDatetime = updateDatetime;
-    }
-
-    /**
      * [get] client_secret: {NotNull, text(2147483647)} <br>
      * チャネルシークレット
      * @return The value of the column 'client_secret'. (basically NotNull if selected: for the constraint)
@@ -535,5 +455,59 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
     public void setGrantType(String grantType) {
         registerModifiedProperty("grantType");
         _grantType = grantType;
+    }
+
+    /**
+     * [get] delete_flag: {NotNull, bool(1), default=[false]} <br>
+     * @return The value of the column 'delete_flag'. (basically NotNull if selected: for the constraint)
+     */
+    public Boolean getDeleteFlag() {
+        checkSpecifiedProperty("deleteFlag");
+        return _deleteFlag;
+    }
+
+    /**
+     * [set] delete_flag: {NotNull, bool(1), default=[false]} <br>
+     * @param deleteFlag The value of the column 'delete_flag'. (basically NotNull if update: for the constraint)
+     */
+    public void setDeleteFlag(Boolean deleteFlag) {
+        registerModifiedProperty("deleteFlag");
+        _deleteFlag = deleteFlag;
+    }
+
+    /**
+     * [get] register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]} <br>
+     * @return The value of the column 'register_datetime'. (basically NotNull if selected: for the constraint)
+     */
+    public java.time.LocalDateTime getRegisterDatetime() {
+        checkSpecifiedProperty("registerDatetime");
+        return _registerDatetime;
+    }
+
+    /**
+     * [set] register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]} <br>
+     * @param registerDatetime The value of the column 'register_datetime'. (basically NotNull if update: for the constraint)
+     */
+    public void setRegisterDatetime(java.time.LocalDateTime registerDatetime) {
+        registerModifiedProperty("registerDatetime");
+        _registerDatetime = registerDatetime;
+    }
+
+    /**
+     * [get] update_datetime: {timestamp(26, 3)} <br>
+     * @return The value of the column 'update_datetime'. (NullAllowed even if selected: for no constraint)
+     */
+    public java.time.LocalDateTime getUpdateDatetime() {
+        checkSpecifiedProperty("updateDatetime");
+        return _updateDatetime;
+    }
+
+    /**
+     * [set] update_datetime: {timestamp(26, 3)} <br>
+     * @param updateDatetime The value of the column 'update_datetime'. (NullAllowed: null update allowed for no constraint)
+     */
+    public void setUpdateDatetime(java.time.LocalDateTime updateDatetime) {
+        registerModifiedProperty("updateDatetime");
+        _updateDatetime = updateDatetime;
     }
 }

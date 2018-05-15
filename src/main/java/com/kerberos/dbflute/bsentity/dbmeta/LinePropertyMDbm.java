@@ -47,16 +47,15 @@ public class LinePropertyMDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getResponseType(), (et, vl) -> ((LinePropertyM)et).setResponseType((String)vl), "responseType");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getClientId(), (et, vl) -> ((LinePropertyM)et).setClientId((String)vl), "clientId");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getRedirectUri(), (et, vl) -> ((LinePropertyM)et).setRedirectUri((String)vl), "redirectUri");
-        setupEpg(_epgMap, et -> ((LinePropertyM)et).getStateVal(), (et, vl) -> ((LinePropertyM)et).setStateVal((String)vl), "stateVal");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getScopeVal(), (et, vl) -> ((LinePropertyM)et).setScopeVal((String)vl), "scopeVal");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getNonce(), (et, vl) -> ((LinePropertyM)et).setNonce((String)vl), "nonce");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getPrompt(), (et, vl) -> ((LinePropertyM)et).setPrompt((String)vl), "prompt");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getBotPrompt(), (et, vl) -> ((LinePropertyM)et).setBotPrompt((String)vl), "botPrompt");
+        setupEpg(_epgMap, et -> ((LinePropertyM)et).getClientSecret(), (et, vl) -> ((LinePropertyM)et).setClientSecret((String)vl), "clientSecret");
+        setupEpg(_epgMap, et -> ((LinePropertyM)et).getGrantType(), (et, vl) -> ((LinePropertyM)et).setGrantType((String)vl), "grantType");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getDeleteFlag(), (et, vl) -> ((LinePropertyM)et).setDeleteFlag((Boolean)vl), "deleteFlag");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getRegisterDatetime(), (et, vl) -> ((LinePropertyM)et).setRegisterDatetime(ctldt(vl)), "registerDatetime");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getUpdateDatetime(), (et, vl) -> ((LinePropertyM)et).setUpdateDatetime(ctldt(vl)), "updateDatetime");
-        setupEpg(_epgMap, et -> ((LinePropertyM)et).getClientSecret(), (et, vl) -> ((LinePropertyM)et).setClientSecret((String)vl), "clientSecret");
-        setupEpg(_epgMap, et -> ((LinePropertyM)et).getGrantType(), (et, vl) -> ((LinePropertyM)et).setGrantType((String)vl), "grantType");
     }
     public PropertyGateway findPropertyGateway(String prop)
     { return doFindEpg(_epgMap, prop); }
@@ -82,16 +81,15 @@ public class LinePropertyMDbm extends AbstractDBMeta {
     protected final ColumnInfo _columnResponseType = cci("response_type", "response_type", null, null, String.class, "responseType", null, false, false, true, "text", 2147483647, 0, null, "'code'::text", false, null, null, null, null, null, false);
     protected final ColumnInfo _columnClientId = cci("client_id", "client_id", null, null, String.class, "clientId", null, false, false, true, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnRedirectUri = cci("redirect_uri", "redirect_uri", null, null, String.class, "redirectUri", null, false, false, true, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnStateVal = cci("state_val", "state_val", null, null, String.class, "stateVal", null, false, false, true, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnScopeVal = cci("scope_val", "scope_val", null, null, String.class, "scopeVal", null, false, false, true, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnNonce = cci("nonce", "nonce", null, null, String.class, "nonce", null, false, false, false, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnPrompt = cci("prompt", "prompt", null, null, String.class, "prompt", null, false, false, false, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnBotPrompt = cci("bot_prompt", "bot_prompt", null, null, String.class, "botPrompt", null, false, false, false, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnDeleteFlag = cci("delete_flag", "delete_flag", null, null, Boolean.class, "deleteFlag", null, false, false, true, "bool", 1, 0, null, "false", false, null, null, null, null, null, false);
-    protected final ColumnInfo _columnRegisterDatetime = cci("register_datetime", "register_datetime", null, null, java.time.LocalDateTime.class, "registerDatetime", null, false, false, true, "timestamp", 26, 3, null, "now()", true, null, null, null, null, null, false);
-    protected final ColumnInfo _columnUpdateDatetime = cci("update_datetime", "update_datetime", null, null, java.time.LocalDateTime.class, "updateDatetime", null, false, false, false, "timestamp", 26, 3, null, null, true, null, null, null, null, null, false);
     protected final ColumnInfo _columnClientSecret = cci("client_secret", "client_secret", null, null, String.class, "clientSecret", null, false, false, true, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnGrantType = cci("grant_type", "grant_type", null, null, String.class, "grantType", null, false, false, true, "text", 2147483647, 0, null, "'authorization_code。付与タイプを指定します。'::text", false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnDeleteFlag = cci("delete_flag", "delete_flag", null, null, Boolean.class, "deleteFlag", null, false, false, true, "bool", 1, 0, null, "false", false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnRegisterDatetime = cci("register_datetime", "register_datetime", null, null, java.time.LocalDateTime.class, "registerDatetime", null, false, false, true, "timestamp", 26, 3, null, "CURRENT_TIMESTAMP", true, null, null, null, null, null, false);
+    protected final ColumnInfo _columnUpdateDatetime = cci("update_datetime", "update_datetime", null, null, java.time.LocalDateTime.class, "updateDatetime", null, false, false, false, "timestamp", 26, 3, null, null, true, null, null, null, null, null, false);
 
     /**
      * line_prop_id: {PK, ID, NotNull, serial(10)}
@@ -119,11 +117,6 @@ public class LinePropertyMDbm extends AbstractDBMeta {
      */
     public ColumnInfo columnRedirectUri() { return _columnRedirectUri; }
     /**
-     * state_val: {NotNull, text(2147483647)}
-     * @return The information object of specified column. (NotNull)
-     */
-    public ColumnInfo columnStateVal() { return _columnStateVal; }
-    /**
      * scope_val: {NotNull, text(2147483647)}
      * @return The information object of specified column. (NotNull)
      */
@@ -144,21 +137,6 @@ public class LinePropertyMDbm extends AbstractDBMeta {
      */
     public ColumnInfo columnBotPrompt() { return _columnBotPrompt; }
     /**
-     * delete_flag: {NotNull, bool(1), default=[false]}
-     * @return The information object of specified column. (NotNull)
-     */
-    public ColumnInfo columnDeleteFlag() { return _columnDeleteFlag; }
-    /**
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @return The information object of specified column. (NotNull)
-     */
-    public ColumnInfo columnRegisterDatetime() { return _columnRegisterDatetime; }
-    /**
-     * update_datetime: {timestamp(26, 3)}
-     * @return The information object of specified column. (NotNull)
-     */
-    public ColumnInfo columnUpdateDatetime() { return _columnUpdateDatetime; }
-    /**
      * client_secret: {NotNull, text(2147483647)}
      * @return The information object of specified column. (NotNull)
      */
@@ -168,6 +146,21 @@ public class LinePropertyMDbm extends AbstractDBMeta {
      * @return The information object of specified column. (NotNull)
      */
     public ColumnInfo columnGrantType() { return _columnGrantType; }
+    /**
+     * delete_flag: {NotNull, bool(1), default=[false]}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnDeleteFlag() { return _columnDeleteFlag; }
+    /**
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnRegisterDatetime() { return _columnRegisterDatetime; }
+    /**
+     * update_datetime: {timestamp(26, 3)}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnUpdateDatetime() { return _columnUpdateDatetime; }
 
     protected List<ColumnInfo> ccil() {
         List<ColumnInfo> ls = newArrayList();
@@ -176,16 +169,15 @@ public class LinePropertyMDbm extends AbstractDBMeta {
         ls.add(columnResponseType());
         ls.add(columnClientId());
         ls.add(columnRedirectUri());
-        ls.add(columnStateVal());
         ls.add(columnScopeVal());
         ls.add(columnNonce());
         ls.add(columnPrompt());
         ls.add(columnBotPrompt());
+        ls.add(columnClientSecret());
+        ls.add(columnGrantType());
         ls.add(columnDeleteFlag());
         ls.add(columnRegisterDatetime());
         ls.add(columnUpdateDatetime());
-        ls.add(columnClientSecret());
-        ls.add(columnGrantType());
         return ls;
     }
 

@@ -330,7 +330,7 @@ dl.procedurelist dd.column pre {
 
 <body>
 <h1>Schema for Kerberos (postgresql)</h1>
-<p class="mainschema">generated from <strong>postgres.kerberos</strong></p>
+<p class="mainschema">generated from <strong>dh2spoe40ji3o.kerberos</strong></p>
 <div class="navilinkarea">
 <p class="sisterlink"><a href="./history-Kerberos.html">to HistoryHTML</a></p>
 </div>
@@ -356,7 +356,7 @@ dl.procedurelist dd.column pre {
 	<tbody id="table-list-body">
 	<tr>
 		<td class="rownumcell">1</td>
-		<td class="namecell" data-name="line_property_m"><a href="#line_property_m" title="type=TABLE, primaryKey={line_prop_id}, nameLength=15, columnCount=15">line_property_m</a></td>
+		<td class="namecell" data-name="line_property_m"><a href="#line_property_m" title="type=TABLE, primaryKey={line_prop_id}, nameLength=15, columnCount=14">line_property_m</a></td>
 		<td class="typecell">TABLE</td>
 		<td class="relcell">&nbsp;</td>
 		<td class="relcell">&nbsp;</td>
@@ -366,7 +366,7 @@ dl.procedurelist dd.column pre {
 	</tbody>
 </table>
 
-<h2 id="line_property_m" title="type=TABLE, primaryKey={line_prop_id}, nameLength=15, columnCount=15">
+<h2 id="line_property_m" title="type=TABLE, primaryKey={line_prop_id}, nameLength=15, columnCount=14">
 line_property_m
 </h2>
 <div class="tablecomment line_property_m_comment" data-name="line_property_m"><pre>LINEプロパティマスタ</pre></div>
@@ -394,7 +394,7 @@ line_property_m
 	</thead>
 	<tr>
 		<td class="rownumcell">1</td>
-		<td class="flgcell" title="line_property_m_pkey :: sequence=line_property_m_line_prop_id_seq:minimum(1),maximum(9223372036854775807),increment(1)">o</td>
+		<td class="flgcell" title="line_property_m_pkey :: sequence=line_property_m_line_prop_id_seq:minimum(1),maximum(2147483647),increment(1)">o</td>
 		<td class="flgcell">o</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -489,24 +489,6 @@ line_property_m
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class=" columnnamecell" id="line_property_m_state_val">state_val</td>
-		<td class="typecell">text</td>
-		<td class="sizecell"> 2147483647 </td>
-		<td class="defvalcell"> &nbsp;</td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>クロスサイトリクエストフォージェリ防止用の固有な英数字の文字列。アプリ側でランダムに生成する必要があります。URLエンコードされた文字列は使用できません。</pre></td>
-		<td class="subcell">stateVal</td>
-		<td class="subcell">String</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">7</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
 		<td class=" columnnamecell" id="line_property_m_scope_val">scope_val</td>
 		<td class="typecell">text</td>
 		<td class="sizecell"> 2147483647 </td>
@@ -522,7 +504,7 @@ email：ユーザーのメールアドレスを取得する権限です。openid
 		<td class="subcell">String</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">8</td>
+		<td class="rownumcell">7</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -540,7 +522,7 @@ email：ユーザーのメールアドレスを取得する権限です。openid
 		<td class="subcell">String</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">9</td>
+		<td class="rownumcell">8</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -558,7 +540,7 @@ email：ユーザーのメールアドレスを取得する権限です。openid
 		<td class="subcell">String</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">10</td>
+		<td class="rownumcell">9</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -576,61 +558,7 @@ email：ユーザーのメールアドレスを取得する権限です。openid
 		<td class="subcell">String</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">11</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
-		<td class=" columnnamecell" id="line_property_m_delete_flag">delete_flag</td>
-		<td class="typecell">bool</td>
-		<td class="sizecell"> 1 </td>
-		<td class="defvalcell"> false</td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">deleteFlag</td>
-		<td class="subcell">Boolean</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">12</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
-		<td class="comcolcell columnnamecell" id="line_property_m_register_datetime">register_datetime</td>
-		<td class="typecell">timestamp</td>
-		<td class="sizecell"> 26, 3 </td>
-		<td class="defvalcell"> now()</td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">registerDatetime</td>
-		<td class="subcell">LocalDateTime</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">13</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="comcolcell columnnamecell" id="line_property_m_update_datetime">update_datetime</td>
-		<td class="typecell">timestamp</td>
-		<td class="sizecell"> 26, 3 </td>
-		<td class="defvalcell"> &nbsp;</td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">updateDatetime</td>
-		<td class="subcell">LocalDateTime</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">14</td>
+		<td class="rownumcell">10</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -648,7 +576,7 @@ email：ユーザーのメールアドレスを取得する権限です。openid
 		<td class="subcell">String</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">15</td>
+		<td class="rownumcell">11</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -664,6 +592,60 @@ email：ユーザーのメールアドレスを取得する権限です。openid
 		<td class="commentcell"><pre>authorization_code</pre></td>
 		<td class="subcell">grantType</td>
 		<td class="subcell">String</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">12</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class=" columnnamecell" id="line_property_m_delete_flag">delete_flag</td>
+		<td class="typecell">bool</td>
+		<td class="sizecell"> 1 </td>
+		<td class="defvalcell"> false</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">deleteFlag</td>
+		<td class="subcell">Boolean</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">13</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="comcolcell columnnamecell" id="line_property_m_register_datetime">register_datetime</td>
+		<td class="typecell">timestamp</td>
+		<td class="sizecell"> 26, 3 </td>
+		<td class="defvalcell"> CURRENT_TIMESTAMP</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">registerDatetime</td>
+		<td class="subcell">LocalDateTime</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">14</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="comcolcell columnnamecell" id="line_property_m_update_datetime">update_datetime</td>
+		<td class="typecell">timestamp</td>
+		<td class="sizecell"> 26, 3 </td>
+		<td class="defvalcell"> &nbsp;</td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updateDatetime</td>
+		<td class="subcell">LocalDateTime</td>
 	</tr>
 </table>
 
@@ -1064,9 +1046,6 @@ function Decomment() {
 				, 'redirect_uri': {
 					'databaseComment': 'コールバックURL。認証と認可の後にユーザーがリダイレクトされるURLです。コンソールでチャネル向けに登録したコールバックURLと一致する必要があります。'
 				}
-				, 'state_val': {
-					'databaseComment': 'クロスサイトリクエストフォージェリ防止用の固有な英数字の文字列。アプリ側でランダムに生成する必要があります。URLエンコードされた文字列は使用できません。'
-				}
 				, 'scope_val': {
 					'databaseComment': 'ユーザーが付与する権限。URLエンコードされた空白文字（%20）で区切って、複数のスコープを指定できます。詳しくは、「スコープ」を参照してください。ユーザーが付与する権限。URLエンコードされた空白文字（%20）で区切って、複数のスコープを指定できます。<br>profile：ユーザーのプロフィール情報を取得する権限です。<br>openid：IDトークンを取得する権限です。詳しくは、「IDトークン」を参照してください。<br>email：ユーザーのメールアドレスを取得する権限です。openidを同時に指定する必要があります。詳しくは、「IDトークン」を参照してください。'
 				}
@@ -1079,6 +1058,12 @@ function Decomment() {
 				, 'bot_prompt': {
 					'databaseComment': 'ボットを友だち追加するオプションをユーザーのログイン時に表示します。normalまたはaggressiveを指定します。詳しくは、「ボットをLINEログインのチャネルにリンクする」を参照してください。'
 				}
+				, 'client_secret': {
+					'databaseComment': 'チャネルシークレット'
+				}
+				, 'grant_type': {
+					'databaseComment': 'authorization_code'
+				}
 				, 'delete_flag': {
 					'databaseComment': ''
 				}
@@ -1087,12 +1072,6 @@ function Decomment() {
 				}
 				, 'update_datetime': {
 					'databaseComment': ''
-				}
-				, 'client_secret': {
-					'databaseComment': 'チャネルシークレット'
-				}
-				, 'grant_type': {
-					'databaseComment': 'authorization_code'
 				}
 			}
 		}

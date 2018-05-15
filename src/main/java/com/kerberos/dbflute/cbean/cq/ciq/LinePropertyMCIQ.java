@@ -66,16 +66,15 @@ public class LinePropertyMCIQ extends AbstractBsLinePropertyMCQ {
     protected ConditionValue xgetCValueResponseType() { return _myCQ.xdfgetResponseType(); }
     protected ConditionValue xgetCValueClientId() { return _myCQ.xdfgetClientId(); }
     protected ConditionValue xgetCValueRedirectUri() { return _myCQ.xdfgetRedirectUri(); }
-    protected ConditionValue xgetCValueStateVal() { return _myCQ.xdfgetStateVal(); }
     protected ConditionValue xgetCValueScopeVal() { return _myCQ.xdfgetScopeVal(); }
     protected ConditionValue xgetCValueNonce() { return _myCQ.xdfgetNonce(); }
     protected ConditionValue xgetCValuePrompt() { return _myCQ.xdfgetPrompt(); }
     protected ConditionValue xgetCValueBotPrompt() { return _myCQ.xdfgetBotPrompt(); }
+    protected ConditionValue xgetCValueClientSecret() { return _myCQ.xdfgetClientSecret(); }
+    protected ConditionValue xgetCValueGrantType() { return _myCQ.xdfgetGrantType(); }
     protected ConditionValue xgetCValueDeleteFlag() { return _myCQ.xdfgetDeleteFlag(); }
     protected ConditionValue xgetCValueRegisterDatetime() { return _myCQ.xdfgetRegisterDatetime(); }
     protected ConditionValue xgetCValueUpdateDatetime() { return _myCQ.xdfgetUpdateDatetime(); }
-    protected ConditionValue xgetCValueClientSecret() { return _myCQ.xdfgetClientSecret(); }
-    protected ConditionValue xgetCValueGrantType() { return _myCQ.xdfgetGrantType(); }
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String pp) { return null; }
     public String keepScalarCondition(LinePropertyMCQ sq)
     { throwIICBOE("ScalarCondition"); return null; }

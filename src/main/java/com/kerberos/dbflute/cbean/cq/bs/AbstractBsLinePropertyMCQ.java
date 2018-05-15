@@ -714,141 +714,6 @@ public abstract class AbstractBsLinePropertyMCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_Equal(String stateVal) {
-        doSetStateVal_Equal(fRES(stateVal));
-    }
-
-    protected void doSetStateVal_Equal(String stateVal) {
-        regStateVal(CK_EQ, stateVal);
-    }
-
-    /**
-     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_NotEqual(String stateVal) {
-        doSetStateVal_NotEqual(fRES(stateVal));
-    }
-
-    protected void doSetStateVal_NotEqual(String stateVal) {
-        regStateVal(CK_NES, stateVal);
-    }
-
-    /**
-     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as greaterThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_GreaterThan(String stateVal) {
-        regStateVal(CK_GT, fRES(stateVal));
-    }
-
-    /**
-     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as lessThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_LessThan(String stateVal) {
-        regStateVal(CK_LT, fRES(stateVal));
-    }
-
-    /**
-     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as greaterEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_GreaterEqual(String stateVal) {
-        regStateVal(CK_GE, fRES(stateVal));
-    }
-
-    /**
-     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as lessEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_LessEqual(String stateVal) {
-        regStateVal(CK_LE, fRES(stateVal));
-    }
-
-    /**
-     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateValList The collection of stateVal as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_InScope(Collection<String> stateValList) {
-        doSetStateVal_InScope(stateValList);
-    }
-
-    protected void doSetStateVal_InScope(Collection<String> stateValList) {
-        regINS(CK_INS, cTL(stateValList), xgetCValueStateVal(), "state_val");
-    }
-
-    /**
-     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateValList The collection of stateVal as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     */
-    public void setStateVal_NotInScope(Collection<String> stateValList) {
-        doSetStateVal_NotInScope(stateValList);
-    }
-
-    protected void doSetStateVal_NotInScope(Collection<String> stateValList) {
-        regINS(CK_NINS, cTL(stateValList), xgetCValueStateVal(), "state_val");
-    }
-
-    /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * state_val: {NotNull, text(2147483647)} <br>
-     * <pre>e.g. setStateVal_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
-     * @param stateVal The value of stateVal as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param opLambda The callback for option of like-search. (NotNull)
-     */
-    public void setStateVal_LikeSearch(String stateVal, ConditionOptionCall<LikeSearchOption> opLambda) {
-        setStateVal_LikeSearch(stateVal, xcLSOP(opLambda));
-    }
-
-    /**
-     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * state_val: {NotNull, text(2147483647)} <br>
-     * <pre>e.g. setStateVal_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
-     * @param stateVal The value of stateVal as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param likeSearchOption The option of like-search. (NotNull)
-     */
-    protected void setStateVal_LikeSearch(String stateVal, LikeSearchOption likeSearchOption) {
-        regLSQ(CK_LS, fRES(stateVal), xgetCValueStateVal(), "state_val", likeSearchOption);
-    }
-
-    /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
-     * And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param opLambda The callback for option of like-search. (NotNull)
-     */
-    public void setStateVal_NotLikeSearch(String stateVal, ConditionOptionCall<LikeSearchOption> opLambda) {
-        setStateVal_NotLikeSearch(stateVal, xcLSOP(opLambda));
-    }
-
-    /**
-     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
-     * And NullOrEmptyIgnored, SeveralRegistered. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @param stateVal The value of stateVal as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
-     * @param likeSearchOption The option of not-like-search. (NotNull)
-     */
-    protected void setStateVal_NotLikeSearch(String stateVal, LikeSearchOption likeSearchOption) {
-        regLSQ(CK_NLS, fRES(stateVal), xgetCValueStateVal(), "state_val", likeSearchOption);
-    }
-
-    protected void regStateVal(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueStateVal(), "state_val"); }
-    protected abstract ConditionValue xgetCValueStateVal();
-
-    /**
-     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * scope_val: {NotNull, text(2147483647)}
      * @param scopeVal The value of scopeVal as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
      */
@@ -1442,180 +1307,6 @@ public abstract class AbstractBsLinePropertyMCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueBotPrompt();
 
     /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * delete_flag: {NotNull, bool(1), default=[false]}
-     * @param deleteFlag The value of deleteFlag as equal. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setDeleteFlag_Equal(Boolean deleteFlag) {
-        regDeleteFlag(CK_EQ, deleteFlag);
-    }
-
-    protected void regDeleteFlag(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueDeleteFlag(), "delete_flag"); }
-    protected abstract ConditionValue xgetCValueDeleteFlag();
-
-    /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @param registerDatetime The value of registerDatetime as equal. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setRegisterDatetime_Equal(java.time.LocalDateTime registerDatetime) {
-        regRegisterDatetime(CK_EQ,  registerDatetime);
-    }
-
-    /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @param registerDatetime The value of registerDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setRegisterDatetime_GreaterThan(java.time.LocalDateTime registerDatetime) {
-        regRegisterDatetime(CK_GT,  registerDatetime);
-    }
-
-    /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @param registerDatetime The value of registerDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setRegisterDatetime_LessThan(java.time.LocalDateTime registerDatetime) {
-        regRegisterDatetime(CK_LT,  registerDatetime);
-    }
-
-    /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @param registerDatetime The value of registerDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setRegisterDatetime_GreaterEqual(java.time.LocalDateTime registerDatetime) {
-        regRegisterDatetime(CK_GE,  registerDatetime);
-    }
-
-    /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @param registerDatetime The value of registerDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setRegisterDatetime_LessEqual(java.time.LocalDateTime registerDatetime) {
-        regRegisterDatetime(CK_LE, registerDatetime);
-    }
-
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param opLambda The callback for option of from-to. (NotNull)
-     */
-    public void setRegisterDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, ConditionOptionCall<FromToOption> opLambda) {
-        setRegisterDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
-    }
-
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param fromToOption The option of from-to. (NotNull)
-     */
-    protected void setRegisterDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, FromToOption fromToOption) {
-        String nm = "register_datetime"; FromToOption op = fromToOption;
-        regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueRegisterDatetime(), nm, op);
-    }
-
-    protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterDatetime(), "register_datetime"); }
-    protected abstract ConditionValue xgetCValueRegisterDatetime();
-
-    /**
-     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * @param updateDatetime The value of updateDatetime as equal. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setUpdateDatetime_Equal(java.time.LocalDateTime updateDatetime) {
-        regUpdateDatetime(CK_EQ,  updateDatetime);
-    }
-
-    /**
-     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * @param updateDatetime The value of updateDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setUpdateDatetime_GreaterThan(java.time.LocalDateTime updateDatetime) {
-        regUpdateDatetime(CK_GT,  updateDatetime);
-    }
-
-    /**
-     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * @param updateDatetime The value of updateDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setUpdateDatetime_LessThan(java.time.LocalDateTime updateDatetime) {
-        regUpdateDatetime(CK_LT,  updateDatetime);
-    }
-
-    /**
-     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * @param updateDatetime The value of updateDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setUpdateDatetime_GreaterEqual(java.time.LocalDateTime updateDatetime) {
-        regUpdateDatetime(CK_GE,  updateDatetime);
-    }
-
-    /**
-     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * @param updateDatetime The value of updateDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
-     */
-    public void setUpdateDatetime_LessEqual(java.time.LocalDateTime updateDatetime) {
-        regUpdateDatetime(CK_LE, updateDatetime);
-    }
-
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param opLambda The callback for option of from-to. (NotNull)
-     */
-    public void setUpdateDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, ConditionOptionCall<FromToOption> opLambda) {
-        setUpdateDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
-    }
-
-    /**
-     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
-     * And NullIgnored, OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
-     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
-     * @param fromToOption The option of from-to. (NotNull)
-     */
-    protected void setUpdateDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, FromToOption fromToOption) {
-        String nm = "update_datetime"; FromToOption op = fromToOption;
-        regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueUpdateDatetime(), nm, op);
-    }
-
-    /**
-     * IsNull {is null}. And OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     */
-    public void setUpdateDatetime_IsNull() { regUpdateDatetime(CK_ISN, DOBJ); }
-
-    /**
-     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
-     * update_datetime: {timestamp(26, 3)}
-     */
-    public void setUpdateDatetime_IsNotNull() { regUpdateDatetime(CK_ISNN, DOBJ); }
-
-    protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateDatetime(), "update_datetime"); }
-    protected abstract ConditionValue xgetCValueUpdateDatetime();
-
-    /**
      * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
      * client_secret: {NotNull, text(2147483647)}
      * @param clientSecret The value of clientSecret as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
@@ -1884,6 +1575,180 @@ public abstract class AbstractBsLinePropertyMCQ extends AbstractConditionQuery {
 
     protected void regGrantType(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueGrantType(), "grant_type"); }
     protected abstract ConditionValue xgetCValueGrantType();
+
+    /**
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
+     * delete_flag: {NotNull, bool(1), default=[false]}
+     * @param deleteFlag The value of deleteFlag as equal. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setDeleteFlag_Equal(Boolean deleteFlag) {
+        regDeleteFlag(CK_EQ, deleteFlag);
+    }
+
+    protected void regDeleteFlag(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueDeleteFlag(), "delete_flag"); }
+    protected abstract ConditionValue xgetCValueDeleteFlag();
+
+    /**
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @param registerDatetime The value of registerDatetime as equal. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setRegisterDatetime_Equal(java.time.LocalDateTime registerDatetime) {
+        regRegisterDatetime(CK_EQ,  registerDatetime);
+    }
+
+    /**
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @param registerDatetime The value of registerDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setRegisterDatetime_GreaterThan(java.time.LocalDateTime registerDatetime) {
+        regRegisterDatetime(CK_GT,  registerDatetime);
+    }
+
+    /**
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @param registerDatetime The value of registerDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setRegisterDatetime_LessThan(java.time.LocalDateTime registerDatetime) {
+        regRegisterDatetime(CK_LT,  registerDatetime);
+    }
+
+    /**
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @param registerDatetime The value of registerDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setRegisterDatetime_GreaterEqual(java.time.LocalDateTime registerDatetime) {
+        regRegisterDatetime(CK_GE,  registerDatetime);
+    }
+
+    /**
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @param registerDatetime The value of registerDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setRegisterDatetime_LessEqual(java.time.LocalDateTime registerDatetime) {
+        regRegisterDatetime(CK_LE, registerDatetime);
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setRegisterDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setRegisterDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * <pre>e.g. setRegisterDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of registerDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param fromToOption The option of from-to. (NotNull)
+     */
+    protected void setRegisterDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, FromToOption fromToOption) {
+        String nm = "register_datetime"; FromToOption op = fromToOption;
+        regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueRegisterDatetime(), nm, op);
+    }
+
+    protected void regRegisterDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueRegisterDatetime(), "register_datetime"); }
+    protected abstract ConditionValue xgetCValueRegisterDatetime();
+
+    /**
+     * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * @param updateDatetime The value of updateDatetime as equal. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDatetime_Equal(java.time.LocalDateTime updateDatetime) {
+        regUpdateDatetime(CK_EQ,  updateDatetime);
+    }
+
+    /**
+     * GreaterThan(&gt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * @param updateDatetime The value of updateDatetime as greaterThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDatetime_GreaterThan(java.time.LocalDateTime updateDatetime) {
+        regUpdateDatetime(CK_GT,  updateDatetime);
+    }
+
+    /**
+     * LessThan(&lt;). And NullIgnored, OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * @param updateDatetime The value of updateDatetime as lessThan. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDatetime_LessThan(java.time.LocalDateTime updateDatetime) {
+        regUpdateDatetime(CK_LT,  updateDatetime);
+    }
+
+    /**
+     * GreaterEqual(&gt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * @param updateDatetime The value of updateDatetime as greaterEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDatetime_GreaterEqual(java.time.LocalDateTime updateDatetime) {
+        regUpdateDatetime(CK_GE,  updateDatetime);
+    }
+
+    /**
+     * LessEqual(&lt;=). And NullIgnored, OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * @param updateDatetime The value of updateDatetime as lessEqual. (basically NotNull: error as default, or no condition as option)
+     */
+    public void setUpdateDatetime_LessEqual(java.time.LocalDateTime updateDatetime) {
+        regUpdateDatetime(CK_LE, updateDatetime);
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">compareAsDate()</span>);</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param opLambda The callback for option of from-to. (NotNull)
+     */
+    public void setUpdateDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, ConditionOptionCall<FromToOption> opLambda) {
+        setUpdateDatetime_FromTo(fromDatetime, toDatetime, xcFTOP(opLambda));
+    }
+
+    /**
+     * FromTo with various options. (versatile) {(default) fromDatetime &lt;= column &lt;= toDatetime} <br>
+     * And NullIgnored, OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * <pre>e.g. setUpdateDatetime_FromTo(fromDate, toDate, new <span style="color: #CC4747">FromToOption</span>().compareAsDate());</pre>
+     * @param fromDatetime The from-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param toDatetime The to-datetime(yyyy/MM/dd HH:mm:ss.SSS) of updateDatetime. (basically NotNull: if op.allowOneSide(), null allowed)
+     * @param fromToOption The option of from-to. (NotNull)
+     */
+    protected void setUpdateDatetime_FromTo(java.time.LocalDateTime fromDatetime, java.time.LocalDateTime toDatetime, FromToOption fromToOption) {
+        String nm = "update_datetime"; FromToOption op = fromToOption;
+        regFTQ(xfFTHD(fromDatetime, nm, op), xfFTHD(toDatetime, nm, op), xgetCValueUpdateDatetime(), nm, op);
+    }
+
+    /**
+     * IsNull {is null}. And OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     */
+    public void setUpdateDatetime_IsNull() { regUpdateDatetime(CK_ISN, DOBJ); }
+
+    /**
+     * IsNotNull {is not null}. And OnlyOnceRegistered. <br>
+     * update_datetime: {timestamp(26, 3)}
+     */
+    public void setUpdateDatetime_IsNotNull() { regUpdateDatetime(CK_ISNN, DOBJ); }
+
+    protected void regUpdateDatetime(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueUpdateDatetime(), "update_datetime"); }
+    protected abstract ConditionValue xgetCValueUpdateDatetime();
 
     // ===================================================================================
     //                                                                     ScalarCondition

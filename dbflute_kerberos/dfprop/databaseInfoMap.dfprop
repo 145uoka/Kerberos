@@ -20,6 +20,7 @@ map:{
     ; url      = jdbc:postgresql://ec2-50-19-232-205.compute-1.amazonaws.com:5432/dh2spoe40ji3o?sslmode=require
     ; user     = pqpxcnczfjibfh
     ; password = ea488ea909d86ef97e17998150d0c3845b31aa4f3c29aaf26e7e2dc42e11aaeb
+    ; schema   = kerberos
     # /---------------------------------------------------------------------------
     #; url      = jdbc:postgresql://192.168.0.18:5432/postgres?currentSchema=ishigouoka_k
     #; url      = jdbc:postgresql://localhost:5432/postgres?currentSchema=kerberos

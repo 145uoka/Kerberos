@@ -173,26 +173,6 @@ public class BsLinePropertyMCQ extends AbstractBsLinePropertyMCQ {
      */
     public BsLinePropertyMCQ addOrderBy_RedirectUri_Desc() { regOBD("redirect_uri"); return this; }
 
-    protected ConditionValue _stateVal;
-    public ConditionValue xdfgetStateVal()
-    { if (_stateVal == null) { _stateVal = nCV(); }
-      return _stateVal; }
-    protected ConditionValue xgetCValueStateVal() { return xdfgetStateVal(); }
-
-    /**
-     * Add order-by as ascend. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_StateVal_Asc() { regOBA("state_val"); return this; }
-
-    /**
-     * Add order-by as descend. <br>
-     * state_val: {NotNull, text(2147483647)}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_StateVal_Desc() { regOBD("state_val"); return this; }
-
     protected ConditionValue _scopeVal;
     public ConditionValue xdfgetScopeVal()
     { if (_scopeVal == null) { _scopeVal = nCV(); }
@@ -273,66 +253,6 @@ public class BsLinePropertyMCQ extends AbstractBsLinePropertyMCQ {
      */
     public BsLinePropertyMCQ addOrderBy_BotPrompt_Desc() { regOBD("bot_prompt"); return this; }
 
-    protected ConditionValue _deleteFlag;
-    public ConditionValue xdfgetDeleteFlag()
-    { if (_deleteFlag == null) { _deleteFlag = nCV(); }
-      return _deleteFlag; }
-    protected ConditionValue xgetCValueDeleteFlag() { return xdfgetDeleteFlag(); }
-
-    /**
-     * Add order-by as ascend. <br>
-     * delete_flag: {NotNull, bool(1), default=[false]}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_DeleteFlag_Asc() { regOBA("delete_flag"); return this; }
-
-    /**
-     * Add order-by as descend. <br>
-     * delete_flag: {NotNull, bool(1), default=[false]}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_DeleteFlag_Desc() { regOBD("delete_flag"); return this; }
-
-    protected ConditionValue _registerDatetime;
-    public ConditionValue xdfgetRegisterDatetime()
-    { if (_registerDatetime == null) { _registerDatetime = nCV(); }
-      return _registerDatetime; }
-    protected ConditionValue xgetCValueRegisterDatetime() { return xdfgetRegisterDatetime(); }
-
-    /**
-     * Add order-by as ascend. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_RegisterDatetime_Asc() { regOBA("register_datetime"); return this; }
-
-    /**
-     * Add order-by as descend. <br>
-     * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_RegisterDatetime_Desc() { regOBD("register_datetime"); return this; }
-
-    protected ConditionValue _updateDatetime;
-    public ConditionValue xdfgetUpdateDatetime()
-    { if (_updateDatetime == null) { _updateDatetime = nCV(); }
-      return _updateDatetime; }
-    protected ConditionValue xgetCValueUpdateDatetime() { return xdfgetUpdateDatetime(); }
-
-    /**
-     * Add order-by as ascend. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_UpdateDatetime_Asc() { regOBA("update_datetime"); return this; }
-
-    /**
-     * Add order-by as descend. <br>
-     * update_datetime: {timestamp(26, 3)}
-     * @return this. (NotNull)
-     */
-    public BsLinePropertyMCQ addOrderBy_UpdateDatetime_Desc() { regOBD("update_datetime"); return this; }
-
     protected ConditionValue _clientSecret;
     public ConditionValue xdfgetClientSecret()
     { if (_clientSecret == null) { _clientSecret = nCV(); }
@@ -372,6 +292,66 @@ public class BsLinePropertyMCQ extends AbstractBsLinePropertyMCQ {
      * @return this. (NotNull)
      */
     public BsLinePropertyMCQ addOrderBy_GrantType_Desc() { regOBD("grant_type"); return this; }
+
+    protected ConditionValue _deleteFlag;
+    public ConditionValue xdfgetDeleteFlag()
+    { if (_deleteFlag == null) { _deleteFlag = nCV(); }
+      return _deleteFlag; }
+    protected ConditionValue xgetCValueDeleteFlag() { return xdfgetDeleteFlag(); }
+
+    /**
+     * Add order-by as ascend. <br>
+     * delete_flag: {NotNull, bool(1), default=[false]}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_DeleteFlag_Asc() { regOBA("delete_flag"); return this; }
+
+    /**
+     * Add order-by as descend. <br>
+     * delete_flag: {NotNull, bool(1), default=[false]}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_DeleteFlag_Desc() { regOBD("delete_flag"); return this; }
+
+    protected ConditionValue _registerDatetime;
+    public ConditionValue xdfgetRegisterDatetime()
+    { if (_registerDatetime == null) { _registerDatetime = nCV(); }
+      return _registerDatetime; }
+    protected ConditionValue xgetCValueRegisterDatetime() { return xdfgetRegisterDatetime(); }
+
+    /**
+     * Add order-by as ascend. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_RegisterDatetime_Asc() { regOBA("register_datetime"); return this; }
+
+    /**
+     * Add order-by as descend. <br>
+     * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_RegisterDatetime_Desc() { regOBD("register_datetime"); return this; }
+
+    protected ConditionValue _updateDatetime;
+    public ConditionValue xdfgetUpdateDatetime()
+    { if (_updateDatetime == null) { _updateDatetime = nCV(); }
+      return _updateDatetime; }
+    protected ConditionValue xgetCValueUpdateDatetime() { return xdfgetUpdateDatetime(); }
+
+    /**
+     * Add order-by as ascend. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_UpdateDatetime_Asc() { regOBA("update_datetime"); return this; }
+
+    /**
+     * Add order-by as descend. <br>
+     * update_datetime: {timestamp(26, 3)}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_UpdateDatetime_Desc() { regOBD("update_datetime"); return this; }
 
     // ===================================================================================
     //                                                             SpecifiedDerivedOrderBy

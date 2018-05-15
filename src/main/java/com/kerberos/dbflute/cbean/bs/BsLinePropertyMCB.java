@@ -320,11 +320,6 @@ public class BsLinePropertyMCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnRedirectUri() { return doColumn("redirect_uri"); }
         /**
-         * state_val: {NotNull, text(2147483647)}
-         * @return The information object of specified column. (NotNull)
-         */
-        public SpecifiedColumn columnStateVal() { return doColumn("state_val"); }
-        /**
          * scope_val: {NotNull, text(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
@@ -345,21 +340,6 @@ public class BsLinePropertyMCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnBotPrompt() { return doColumn("bot_prompt"); }
         /**
-         * delete_flag: {NotNull, bool(1), default=[false]}
-         * @return The information object of specified column. (NotNull)
-         */
-        public SpecifiedColumn columnDeleteFlag() { return doColumn("delete_flag"); }
-        /**
-         * register_datetime: {NotNull, timestamp(26, 3), default=[now()]}
-         * @return The information object of specified column. (NotNull)
-         */
-        public SpecifiedColumn columnRegisterDatetime() { return doColumn("register_datetime"); }
-        /**
-         * update_datetime: {timestamp(26, 3)}
-         * @return The information object of specified column. (NotNull)
-         */
-        public SpecifiedColumn columnUpdateDatetime() { return doColumn("update_datetime"); }
-        /**
          * client_secret: {NotNull, text(2147483647)}
          * @return The information object of specified column. (NotNull)
          */
@@ -369,6 +349,21 @@ public class BsLinePropertyMCB extends AbstractConditionBean {
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnGrantType() { return doColumn("grant_type"); }
+        /**
+         * delete_flag: {NotNull, bool(1), default=[false]}
+         * @return The information object of specified column. (NotNull)
+         */
+        public SpecifiedColumn columnDeleteFlag() { return doColumn("delete_flag"); }
+        /**
+         * register_datetime: {NotNull, timestamp(26, 3), default=[CURRENT_TIMESTAMP]}
+         * @return The information object of specified column. (NotNull)
+         */
+        public SpecifiedColumn columnRegisterDatetime() { return doColumn("register_datetime"); }
+        /**
+         * update_datetime: {timestamp(26, 3)}
+         * @return The information object of specified column. (NotNull)
+         */
+        public SpecifiedColumn columnUpdateDatetime() { return doColumn("update_datetime"); }
         public void everyColumn() { doEveryColumn(); }
         public void exceptRecordMetaColumn() { doExceptRecordMetaColumn(); }
         @Override
