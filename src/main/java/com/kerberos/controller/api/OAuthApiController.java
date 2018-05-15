@@ -40,17 +40,14 @@ public class OAuthApiController {
 
         OAuthTokenDto oAuthTokenDto = new OAuthTokenDto();
 
-        AccessTokenDto accessTokenDto;
-
         try {
-            accessTokenDto = lineService.getIdToken(form.getCode(), form.getAppKey());
+            AccessTokenDto accessTokenDto = lineService.getIdToken(form.getCode(), form.getAppKey());
 
             IdTokenDto idTokenDto = lineService.createIdTokenDto(accessTokenDto.id_token);
 
             if (!logger.isDebugEnabled()) {
                 idTokenDto.toString();
             }
-
 
             oAuthTokenDto.setLineEmail(idTokenDto.getEmail());
             oAuthTokenDto.setLineId(idTokenDto.getSub());
