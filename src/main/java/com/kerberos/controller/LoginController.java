@@ -57,7 +57,7 @@ public class LoginController extends BaseController {
 
         logger.info(idToken.toString());
 
-        return redirect("/");
+        return redirect("http://localhost:9090/event/");
     }
 
 }
