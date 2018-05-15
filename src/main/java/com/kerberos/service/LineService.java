@@ -120,6 +120,8 @@ public class LineService {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(json);
 
+        ouputLogJsonNode(node);
+
         AccessTokenDto accessToken = new AccessTokenDto(
                 node.get("scope").asText(),
                 node.get("access_token").asText(),
