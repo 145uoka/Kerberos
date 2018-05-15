@@ -14,18 +14,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kerberos.api.form.OAuthExRequestForm;
 import com.kerberos.api.form.OAuthExResultForm;
 import com.kerberos.common.BeforeLogin;
 import com.kerberos.dbflute.exbhv.LinePropertyMBhv;
 import com.kerberos.dbflute.exentity.LinePropertyM;
 import com.kerberos.dto.AccessTokenDto;
 import com.kerberos.dto.IdTokenDto;
-import com.kerberos.exception.IllegalRequestParamException;
 import com.kerberos.exception.NotFoundRecordException;
 import com.kerberos.service.LineService;
 import com.kerberos.service.LoggerService;
@@ -51,12 +53,24 @@ public class OAuthController extends BaseController {
     LinePropertyMBhv linePropertyMBhv;
 
     @RequestMapping(value = "/line/{appKey}", method = RequestMethod.GET)
-    public String lineLogin(@PathVariable String appKey, HttpSession session) throws Exception {
+    public String lineLogin(@PathVariable String appKey, @ModelAttribute("form") OAuthExRequestForm form,
+            BindingResult bindingResult, HttpSession session)
+                    throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, UnsupportedEncodingException {
 
-        String state = "hoge";
-        String redirectUri = lineService.getRedirectUrlForOAuth(appKey, state);
+        String state = form.getState();
+        String redirectUri = null;
+
+        try {
+            redirectUri = lineService.getRedirectUrlForOAuth(appKey, state);
+        } catch (NotFoundRecordException e) {
+            OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
+                    "1", "E001", e.getMessage(),state, null, null);
+            String urlParam = createRedirectUrlParam(oAuthExResultForm);
+            return super.redirect(form.getExRedirectUrl() + urlParam);
+        }
         session.setAttribute("appkey", appKey);
         session.setAttribute("state", state);
+        session.setAttribute("exRedirectUrl", form.getExRedirectUrl());
 
         return super.redirect(redirectUri);
     }
@@ -67,15 +81,25 @@ public class OAuthController extends BaseController {
 
         String appkey = (String)session.getAttribute("appkey");
         String orgState = (String)session.getAttribute("state");
+        String exRedirectUrl = (String)session.getAttribute("exRedirectUrl");
+
 
         if (!StringUtils.equals(state, orgState)) {
-            throw new IllegalRequestParamException("state", orgState, state);
+            OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
+                    "1", "E002", "wrong state!!", state, null, null);
+            String urlParam = createRedirectUrlParam(oAuthExResultForm);
+            session.invalidate();
+            return super.redirect(exRedirectUrl + urlParam);
         }
 
         OptionalEntity<LinePropertyM> optLinePropertyM = linePropertyMBhv.selectByUniqueOf(appkey);
 
         if (!optLinePropertyM.isPresent()) {
-            throw new NotFoundRecordException();
+            OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
+                    "1", "E001", "UnKnown appkey", state, null, null);
+            String urlParam = createRedirectUrlParam(oAuthExResultForm);
+            session.invalidate();
+            return super.redirect(exRedirectUrl + urlParam);
         }
 
         AccessTokenDto accessTokenDto = lineService.getIdToken(code, appkey);
