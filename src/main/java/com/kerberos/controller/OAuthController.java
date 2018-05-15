@@ -87,7 +87,7 @@ public class OAuthController extends BaseController {
         }
 
         OAuthExResultForm form = createOAuthExResultForm(
-                "0",null,null,"state-hoge","state-code", idTokenDto.toString());
+                "0",null,null,"state-hoge","state-code", accessTokenDto.id_token);
 
         session.invalidate();
         String urlParam = createRedirectUrlParam(form);
