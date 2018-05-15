@@ -1,5 +1,8 @@
 
 /* Drop Tables */
+DROP SCHEMA IF EXISTS kerberos;
+CREATE SCHEMA kerberos
+  AUTHORIZATION pqpxcnczfjibfh;
 
 DROP TABLE IF EXISTS kerberos.LINE_PROPERTY_M;
 
