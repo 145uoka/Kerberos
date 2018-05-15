@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,9 +54,17 @@ public class OAuthController extends BaseController {
     LinePropertyMBhv linePropertyMBhv;
 
     @RequestMapping(value = "/line/{appKey}", method = RequestMethod.GET)
-    public String lineLogin(@PathVariable String appKey, @ModelAttribute("form") OAuthExRequestForm form,
+    public String lineLogin(@PathVariable String appKey, @Validated @ModelAttribute("form") OAuthExRequestForm form,
             BindingResult bindingResult, HttpSession session)
                     throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, UnsupportedEncodingException {
+
+        if (bindingResult.hasErrors()) {
+            OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
+                    "1", "E001", "invalid param!", form.getState(), null, null);
+
+            String urlParam = createRedirectUrlParam(oAuthExResultForm);
+            return super.redirect(form.getExRedirectUrl() + urlParam);
+        }
 
         String state = form.getState();
         String redirectUri = null;
@@ -82,7 +91,6 @@ public class OAuthController extends BaseController {
         String appkey = (String)session.getAttribute("appkey");
         String orgState = (String)session.getAttribute("state");
         String exRedirectUrl = (String)session.getAttribute("exRedirectUrl");
-
 
         if (!StringUtils.equals(state, orgState)) {
             OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
@@ -111,7 +119,7 @@ public class OAuthController extends BaseController {
         }
 
         OAuthExResultForm form = createOAuthExResultForm(
-                "0",null,null,"state-hoge","state-code", accessTokenDto.id_token);
+                "0", null, null, state, code, accessTokenDto.id_token);
 
         session.invalidate();
         String urlParam = createRedirectUrlParam(form);
