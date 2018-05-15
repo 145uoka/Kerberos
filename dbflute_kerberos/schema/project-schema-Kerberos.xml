@@ -43,6 +43,8 @@
             default="'authorization_code。付与タイプを指定します。'::text"
             javaType="String" name="grant_type" required="true"
             size="2147483647" type="VARCHAR"/>
+        <column dbType="text" javaType="String" name="ex_redirect_uri"
+            required="true" size="2147483647" type="VARCHAR"/>
         <column dbType="bool" default="false" javaType="Boolean"
             name="delete_flag" required="true" size="1" type="BIT"/>
         <column dbType="timestamp" default="CURRENT_TIMESTAMP"

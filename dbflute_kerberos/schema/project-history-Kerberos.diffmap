@@ -1,4 +1,19 @@
 map:{
+    ; 2018/05/15 11:59:51 = map:{
+        ; diffDate = 2018/05/15 11:59:51
+        ; tableDiff = map:{
+            ; line_property_m = map:{
+                ; tableName = line_property_m
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; ex_redirect_uri = map:{
+                        ; columnName = ex_redirect_uri
+                        ; diffType = ADD
+                    }
+                }
+            }
+        }
+    }
     ; 2018/05/15 10:18:47 = map:{
         ; diffDate = 2018/05/15 10:18:47
         ; tableDiff = map:{

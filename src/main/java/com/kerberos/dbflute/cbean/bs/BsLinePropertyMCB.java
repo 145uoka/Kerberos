@@ -350,6 +350,11 @@ public class BsLinePropertyMCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnGrantType() { return doColumn("grant_type"); }
         /**
+         * ex_redirect_uri: {NotNull, text(2147483647)}
+         * @return The information object of specified column. (NotNull)
+         */
+        public SpecifiedColumn columnExRedirectUri() { return doColumn("ex_redirect_uri"); }
+        /**
          * delete_flag: {NotNull, bool(1), default=[false]}
          * @return The information object of specified column. (NotNull)
          */

@@ -53,6 +53,7 @@ public class LinePropertyMDbm extends AbstractDBMeta {
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getBotPrompt(), (et, vl) -> ((LinePropertyM)et).setBotPrompt((String)vl), "botPrompt");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getClientSecret(), (et, vl) -> ((LinePropertyM)et).setClientSecret((String)vl), "clientSecret");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getGrantType(), (et, vl) -> ((LinePropertyM)et).setGrantType((String)vl), "grantType");
+        setupEpg(_epgMap, et -> ((LinePropertyM)et).getExRedirectUri(), (et, vl) -> ((LinePropertyM)et).setExRedirectUri((String)vl), "exRedirectUri");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getDeleteFlag(), (et, vl) -> ((LinePropertyM)et).setDeleteFlag((Boolean)vl), "deleteFlag");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getRegisterDatetime(), (et, vl) -> ((LinePropertyM)et).setRegisterDatetime(ctldt(vl)), "registerDatetime");
         setupEpg(_epgMap, et -> ((LinePropertyM)et).getUpdateDatetime(), (et, vl) -> ((LinePropertyM)et).setUpdateDatetime(ctldt(vl)), "updateDatetime");
@@ -87,6 +88,7 @@ public class LinePropertyMDbm extends AbstractDBMeta {
     protected final ColumnInfo _columnBotPrompt = cci("bot_prompt", "bot_prompt", null, null, String.class, "botPrompt", null, false, false, false, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnClientSecret = cci("client_secret", "client_secret", null, null, String.class, "clientSecret", null, false, false, true, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnGrantType = cci("grant_type", "grant_type", null, null, String.class, "grantType", null, false, false, true, "text", 2147483647, 0, null, "'authorization_code。付与タイプを指定します。'::text", false, null, null, null, null, null, false);
+    protected final ColumnInfo _columnExRedirectUri = cci("ex_redirect_uri", "ex_redirect_uri", null, null, String.class, "exRedirectUri", null, false, false, true, "text", 2147483647, 0, null, null, false, null, null, null, null, null, false);
     protected final ColumnInfo _columnDeleteFlag = cci("delete_flag", "delete_flag", null, null, Boolean.class, "deleteFlag", null, false, false, true, "bool", 1, 0, null, "false", false, null, null, null, null, null, false);
     protected final ColumnInfo _columnRegisterDatetime = cci("register_datetime", "register_datetime", null, null, java.time.LocalDateTime.class, "registerDatetime", null, false, false, true, "timestamp", 26, 3, null, "CURRENT_TIMESTAMP", true, null, null, null, null, null, false);
     protected final ColumnInfo _columnUpdateDatetime = cci("update_datetime", "update_datetime", null, null, java.time.LocalDateTime.class, "updateDatetime", null, false, false, false, "timestamp", 26, 3, null, null, true, null, null, null, null, null, false);
@@ -147,6 +149,11 @@ public class LinePropertyMDbm extends AbstractDBMeta {
      */
     public ColumnInfo columnGrantType() { return _columnGrantType; }
     /**
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @return The information object of specified column. (NotNull)
+     */
+    public ColumnInfo columnExRedirectUri() { return _columnExRedirectUri; }
+    /**
      * delete_flag: {NotNull, bool(1), default=[false]}
      * @return The information object of specified column. (NotNull)
      */
@@ -175,6 +182,7 @@ public class LinePropertyMDbm extends AbstractDBMeta {
         ls.add(columnBotPrompt());
         ls.add(columnClientSecret());
         ls.add(columnGrantType());
+        ls.add(columnExRedirectUri());
         ls.add(columnDeleteFlag());
         ls.add(columnRegisterDatetime());
         ls.add(columnUpdateDatetime());

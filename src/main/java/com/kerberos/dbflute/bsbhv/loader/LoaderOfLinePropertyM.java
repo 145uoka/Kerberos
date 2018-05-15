@@ -13,7 +13,7 @@ import com.kerberos.dbflute.exentity.*;
  *     line_prop_id
  *
  * [column]
- *     line_prop_id, app_key, response_type, client_id, redirect_uri, scope_val, nonce, prompt, bot_prompt, client_secret, grant_type, delete_flag, register_datetime, update_datetime
+ *     line_prop_id, app_key, response_type, client_id, redirect_uri, scope_val, nonce, prompt, bot_prompt, client_secret, grant_type, ex_redirect_uri, delete_flag, register_datetime, update_datetime
  *
  * [sequence]
  *     line_property_m_line_prop_id_seq

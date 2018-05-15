@@ -34,6 +34,7 @@ CREATE TABLE kerberos.LINE_PROPERTY_M
 	client_secret text NOT NULL,
 	-- authorization_code
 	grant_type text DEFAULT 'authorization_code。付与タイプを指定します。' NOT NULL,
+	ex_redirect_uri text NOT NULL,
 	delete_flag boolean DEFAULT 'false' NOT NULL,
 	register_datetime timestamp(3) DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	update_datetime timestamp(3),

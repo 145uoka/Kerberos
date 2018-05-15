@@ -18,7 +18,7 @@ import com.kerberos.dbflute.exentity.*;
  *     line_prop_id
  *
  * [column]
- *     line_prop_id, app_key, response_type, client_id, redirect_uri, scope_val, nonce, prompt, bot_prompt, client_secret, grant_type, delete_flag, register_datetime, update_datetime
+ *     line_prop_id, app_key, response_type, client_id, redirect_uri, scope_val, nonce, prompt, bot_prompt, client_secret, grant_type, ex_redirect_uri, delete_flag, register_datetime, update_datetime
  *
  * [sequence]
  *     line_property_m_line_prop_id_seq
@@ -54,6 +54,7 @@ import com.kerberos.dbflute.exentity.*;
  * String botPrompt = entity.getBotPrompt();
  * String clientSecret = entity.getClientSecret();
  * String grantType = entity.getGrantType();
+ * String exRedirectUri = entity.getExRedirectUri();
  * Boolean deleteFlag = entity.getDeleteFlag();
  * java.time.LocalDateTime registerDatetime = entity.getRegisterDatetime();
  * java.time.LocalDateTime updateDatetime = entity.getUpdateDatetime();
@@ -68,6 +69,7 @@ import com.kerberos.dbflute.exentity.*;
  * entity.setBotPrompt(botPrompt);
  * entity.setClientSecret(clientSecret);
  * entity.setGrantType(grantType);
+ * entity.setExRedirectUri(exRedirectUri);
  * entity.setDeleteFlag(deleteFlag);
  * entity.setRegisterDatetime(registerDatetime);
  * entity.setUpdateDatetime(updateDatetime);
@@ -118,6 +120,9 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
 
     /** grant_type: {NotNull, text(2147483647), default=['authorization_code。付与タイプを指定します。'::text]} */
     protected String _grantType;
+
+    /** ex_redirect_uri: {NotNull, text(2147483647)} */
+    protected String _exRedirectUri;
 
     /** delete_flag: {NotNull, bool(1), default=[false]} */
     protected Boolean _deleteFlag;
@@ -212,6 +217,7 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
         sb.append(dm).append(xfND(_botPrompt));
         sb.append(dm).append(xfND(_clientSecret));
         sb.append(dm).append(xfND(_grantType));
+        sb.append(dm).append(xfND(_exRedirectUri));
         sb.append(dm).append(xfND(_deleteFlag));
         sb.append(dm).append(xfND(_registerDatetime));
         sb.append(dm).append(xfND(_updateDatetime));
@@ -455,6 +461,24 @@ public abstract class BsLinePropertyM extends AbstractEntity implements DomainEn
     public void setGrantType(String grantType) {
         registerModifiedProperty("grantType");
         _grantType = grantType;
+    }
+
+    /**
+     * [get] ex_redirect_uri: {NotNull, text(2147483647)} <br>
+     * @return The value of the column 'ex_redirect_uri'. (basically NotNull if selected: for the constraint)
+     */
+    public String getExRedirectUri() {
+        checkSpecifiedProperty("exRedirectUri");
+        return _exRedirectUri;
+    }
+
+    /**
+     * [set] ex_redirect_uri: {NotNull, text(2147483647)} <br>
+     * @param exRedirectUri The value of the column 'ex_redirect_uri'. (basically NotNull if update: for the constraint)
+     */
+    public void setExRedirectUri(String exRedirectUri) {
+        registerModifiedProperty("exRedirectUri");
+        _exRedirectUri = exRedirectUri;
     }
 
     /**

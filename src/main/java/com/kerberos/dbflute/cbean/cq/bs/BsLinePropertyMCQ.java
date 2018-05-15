@@ -293,6 +293,26 @@ public class BsLinePropertyMCQ extends AbstractBsLinePropertyMCQ {
      */
     public BsLinePropertyMCQ addOrderBy_GrantType_Desc() { regOBD("grant_type"); return this; }
 
+    protected ConditionValue _exRedirectUri;
+    public ConditionValue xdfgetExRedirectUri()
+    { if (_exRedirectUri == null) { _exRedirectUri = nCV(); }
+      return _exRedirectUri; }
+    protected ConditionValue xgetCValueExRedirectUri() { return xdfgetExRedirectUri(); }
+
+    /**
+     * Add order-by as ascend. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_ExRedirectUri_Asc() { regOBA("ex_redirect_uri"); return this; }
+
+    /**
+     * Add order-by as descend. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @return this. (NotNull)
+     */
+    public BsLinePropertyMCQ addOrderBy_ExRedirectUri_Desc() { regOBD("ex_redirect_uri"); return this; }
+
     protected ConditionValue _deleteFlag;
     public ConditionValue xdfgetDeleteFlag()
     { if (_deleteFlag == null) { _deleteFlag = nCV(); }

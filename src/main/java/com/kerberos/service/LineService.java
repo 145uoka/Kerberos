@@ -88,7 +88,7 @@ public class LineService {
     }
 
 
-    public IdTokenDto getIdToken(String code, String appkey) throws Exception {
+    public AccessTokenDto getIdToken(String code, String appkey) throws Exception {
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
@@ -131,7 +131,7 @@ public class LineService {
                 node.get("id_token").asText()
                 );
 
-        return createIdTokenDto(accessToken.id_token);
+        return accessToken;
     }
 
     private void ouputLogJsonNode(JsonNode node) {
@@ -174,7 +174,7 @@ public class LineService {
         }
     }
 
-    private IdTokenDto createIdTokenDto(String id_token) {
+    public IdTokenDto createIdTokenDto(String id_token) {
         try {
             DecodedJWT jwt = JWT.decode(id_token);
             return new IdTokenDto(

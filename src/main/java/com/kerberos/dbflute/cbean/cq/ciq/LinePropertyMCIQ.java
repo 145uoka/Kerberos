@@ -72,6 +72,7 @@ public class LinePropertyMCIQ extends AbstractBsLinePropertyMCQ {
     protected ConditionValue xgetCValueBotPrompt() { return _myCQ.xdfgetBotPrompt(); }
     protected ConditionValue xgetCValueClientSecret() { return _myCQ.xdfgetClientSecret(); }
     protected ConditionValue xgetCValueGrantType() { return _myCQ.xdfgetGrantType(); }
+    protected ConditionValue xgetCValueExRedirectUri() { return _myCQ.xdfgetExRedirectUri(); }
     protected ConditionValue xgetCValueDeleteFlag() { return _myCQ.xdfgetDeleteFlag(); }
     protected ConditionValue xgetCValueRegisterDatetime() { return _myCQ.xdfgetRegisterDatetime(); }
     protected ConditionValue xgetCValueUpdateDatetime() { return _myCQ.xdfgetUpdateDatetime(); }

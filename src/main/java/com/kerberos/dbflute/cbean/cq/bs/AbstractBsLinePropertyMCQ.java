@@ -1577,6 +1577,141 @@ public abstract class AbstractBsLinePropertyMCQ extends AbstractConditionQuery {
     protected abstract ConditionValue xgetCValueGrantType();
 
     /**
+     * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as equal. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_Equal(String exRedirectUri) {
+        doSetExRedirectUri_Equal(fRES(exRedirectUri));
+    }
+
+    protected void doSetExRedirectUri_Equal(String exRedirectUri) {
+        regExRedirectUri(CK_EQ, exRedirectUri);
+    }
+
+    /**
+     * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as notEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_NotEqual(String exRedirectUri) {
+        doSetExRedirectUri_NotEqual(fRES(exRedirectUri));
+    }
+
+    protected void doSetExRedirectUri_NotEqual(String exRedirectUri) {
+        regExRedirectUri(CK_NES, exRedirectUri);
+    }
+
+    /**
+     * GreaterThan(&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as greaterThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_GreaterThan(String exRedirectUri) {
+        regExRedirectUri(CK_GT, fRES(exRedirectUri));
+    }
+
+    /**
+     * LessThan(&lt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as lessThan. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_LessThan(String exRedirectUri) {
+        regExRedirectUri(CK_LT, fRES(exRedirectUri));
+    }
+
+    /**
+     * GreaterEqual(&gt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as greaterEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_GreaterEqual(String exRedirectUri) {
+        regExRedirectUri(CK_GE, fRES(exRedirectUri));
+    }
+
+    /**
+     * LessEqual(&lt;=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as lessEqual. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_LessEqual(String exRedirectUri) {
+        regExRedirectUri(CK_LE, fRES(exRedirectUri));
+    }
+
+    /**
+     * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUriList The collection of exRedirectUri as inScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_InScope(Collection<String> exRedirectUriList) {
+        doSetExRedirectUri_InScope(exRedirectUriList);
+    }
+
+    protected void doSetExRedirectUri_InScope(Collection<String> exRedirectUriList) {
+        regINS(CK_INS, cTL(exRedirectUriList), xgetCValueExRedirectUri(), "ex_redirect_uri");
+    }
+
+    /**
+     * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUriList The collection of exRedirectUri as notInScope. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     */
+    public void setExRedirectUri_NotInScope(Collection<String> exRedirectUriList) {
+        doSetExRedirectUri_NotInScope(exRedirectUriList);
+    }
+
+    protected void doSetExRedirectUri_NotInScope(Collection<String> exRedirectUriList) {
+        regINS(CK_NINS, cTL(exRedirectUriList), xgetCValueExRedirectUri(), "ex_redirect_uri");
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)} <br>
+     * <pre>e.g. setExRedirectUri_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param exRedirectUri The value of exRedirectUri as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setExRedirectUri_LikeSearch(String exRedirectUri, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setExRedirectUri_LikeSearch(exRedirectUri, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)} <br>
+     * <pre>e.g. setExRedirectUri_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
+     * @param exRedirectUri The value of exRedirectUri as likeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param likeSearchOption The option of like-search. (NotNull)
+     */
+    protected void setExRedirectUri_LikeSearch(String exRedirectUri, LikeSearchOption likeSearchOption) {
+        regLSQ(CK_LS, fRES(exRedirectUri), xgetCValueExRedirectUri(), "ex_redirect_uri", likeSearchOption);
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setExRedirectUri_NotLikeSearch(String exRedirectUri, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setExRedirectUri_NotLikeSearch(exRedirectUri, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * ex_redirect_uri: {NotNull, text(2147483647)}
+     * @param exRedirectUri The value of exRedirectUri as notLikeSearch. (basically NotNull, NotEmpty: error as default, or no condition as option)
+     * @param likeSearchOption The option of not-like-search. (NotNull)
+     */
+    protected void setExRedirectUri_NotLikeSearch(String exRedirectUri, LikeSearchOption likeSearchOption) {
+        regLSQ(CK_NLS, fRES(exRedirectUri), xgetCValueExRedirectUri(), "ex_redirect_uri", likeSearchOption);
+    }
+
+    protected void regExRedirectUri(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueExRedirectUri(), "ex_redirect_uri"); }
+    protected abstract ConditionValue xgetCValueExRedirectUri();
+
+    /**
      * Equal(=). And NullIgnored, OnlyOnceRegistered. <br>
      * delete_flag: {NotNull, bool(1), default=[false]}
      * @param deleteFlag The value of deleteFlag as equal. (basically NotNull: error as default, or no condition as option)
