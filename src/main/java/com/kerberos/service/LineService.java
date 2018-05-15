@@ -13,6 +13,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.dbflute.optional.OptionalEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,8 @@ import com.kerberos.exception.NotFoundRecordException;
  */
 @Service
 public class LineService {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     LoggerService loggerService;
@@ -126,6 +130,46 @@ public class LineService {
                 );
 
         return createIdTokenDto(accessToken.id_token);
+    }
+
+    private void ouputLogJsonNode(JsonNode node) {
+        if (!logger.isDebugEnabled()) {
+            return;
+        }
+        if (node == null) {
+            logger.debug("JsonNode is null!!");
+            return;
+        }
+        if (node.get("scope") != null) {
+            logger.debug("scope = [" + node.get("scope").asText() + "]");
+        } else {
+            logger.debug("scope = [null]");
+        }
+        if (node.get("access_token") != null) {
+            logger.debug("access_token = [" + node.get("access_token").asText() + "]");
+        } else {
+            logger.debug("access_token = [null]");
+        }
+        if (node.get("token_type") != null) {
+            logger.debug("token_type = [" + node.get("token_type").asText() + "]");
+        } else {
+            logger.debug("token_type = [null]");
+        }
+        if (node.get("expires_in") != null) {
+            logger.debug("expires_in = [" + node.get("expires_in").asText() + "]");
+        } else {
+            logger.debug("expires_in = [null]");
+        }
+        if (node.get("refresh_token") != null) {
+            logger.debug("refresh_token = [" + node.get("refresh_token").asText() + "]");
+        } else {
+            logger.debug("refresh_token = [null]");
+        }
+        if (node.get("id_token") != null) {
+            logger.debug("id_token = [" + node.get("id_token").asText() + "]");
+        } else {
+            logger.debug("id_token = [null]");
+        }
     }
 
     private IdTokenDto createIdTokenDto(String id_token) {
