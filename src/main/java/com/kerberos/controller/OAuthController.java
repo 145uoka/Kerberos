@@ -73,7 +73,7 @@ public class OAuthController extends BaseController {
             redirectUri = lineService.getRedirectUrlForOAuth(appKey, state);
         } catch (NotFoundRecordException e) {
             OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
-                    "1", "E001", e.getMessage(),state, null, null);
+                    "1", "E001", "Unknown APP_KEY is [" + appKey + "]" ,state, null, null);
             String urlParam = createRedirectUrlParam(oAuthExResultForm);
             return super.redirect(form.getExRedirectUrl() + urlParam);
         }
