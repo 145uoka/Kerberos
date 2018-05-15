@@ -3,9 +3,9 @@ package com.kerberos.api.form.api;
 import java.io.Serializable;
 
 /**
- * GetTokenRequestDto。
+ * GetTokenRequestForm。
  *
- * @author 
+ * @author
  */
 public class GetTokenRequestForm implements Serializable {
 
@@ -20,6 +20,9 @@ public class GetTokenRequestForm implements Serializable {
 
     /** code */
     private String code;
+
+    /** appKey */
+    private String appKey;
 
     /**
      * clientIdの取得。
@@ -73,6 +76,24 @@ public class GetTokenRequestForm implements Serializable {
      */
     public void setCode(String code) {
         this.code = code;
+    }
+
+    /**
+     * appKeyの取得。
+     *
+     * @return appKey
+     */
+    public String getAppKey() {
+        return this.appKey;
+    }
+
+    /**
+     * appKeyを設定。
+     *
+     * @param appKey appKey
+     */
+    public void setAppKey(String appKey) {
+        this.appKey = appKey;
     }
 
 }

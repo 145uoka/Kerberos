@@ -27,8 +27,6 @@ import com.kerberos.api.form.OAuthExResultForm;
 import com.kerberos.common.BeforeLogin;
 import com.kerberos.dbflute.exbhv.LinePropertyMBhv;
 import com.kerberos.dbflute.exentity.LinePropertyM;
-import com.kerberos.dto.AccessTokenDto;
-import com.kerberos.dto.IdTokenDto;
 import com.kerberos.exception.NotFoundRecordException;
 import com.kerberos.service.LineService;
 import com.kerberos.service.LoggerService;
@@ -60,7 +58,7 @@ public class OAuthController extends BaseController {
 
         if (bindingResult.hasErrors()) {
             OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
-                    "1", "E001", "invalid param!", form.getState(), null, null);
+                    "1", "E001", "invalid param!", form.getState(), null);
 
             String urlParam = createRedirectUrlParam(oAuthExResultForm);
             return super.redirect(form.getExRedirectUrl() + urlParam);
@@ -73,7 +71,7 @@ public class OAuthController extends BaseController {
             redirectUri = lineService.getRedirectUrlForOAuth(appKey, state);
         } catch (NotFoundRecordException e) {
             OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
-                    "1", "E001", "Unknown APP_KEY is [" + appKey + "]" ,state, null, null);
+                    "1", "E001", "Unknown APP_KEY is [" + appKey + "]" ,state, null);
             String urlParam = createRedirectUrlParam(oAuthExResultForm);
             return super.redirect(form.getExRedirectUrl() + urlParam);
         }
@@ -94,7 +92,7 @@ public class OAuthController extends BaseController {
 
         if (!StringUtils.equals(state, orgState)) {
             OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
-                    "1", "E002", "wrong state!!", state, null, null);
+                    "1", "E002", "wrong state!!", state, null);
             String urlParam = createRedirectUrlParam(oAuthExResultForm);
             session.invalidate();
             return super.redirect(exRedirectUrl + urlParam);
@@ -104,31 +102,22 @@ public class OAuthController extends BaseController {
 
         if (!optLinePropertyM.isPresent()) {
             OAuthExResultForm oAuthExResultForm = createOAuthExResultForm(
-                    "1", "E001", "UnKnown appkey", state, null, null);
+                    "1", "E001", "UnKnown appkey", state, null);
             String urlParam = createRedirectUrlParam(oAuthExResultForm);
             session.invalidate();
             return super.redirect(exRedirectUrl + urlParam);
         }
 
-        AccessTokenDto accessTokenDto = lineService.getIdToken(code, appkey);
-
-        IdTokenDto idTokenDto = lineService.createIdTokenDto(accessTokenDto.id_token);
-
-        if (!logger.isDebugEnabled()) {
-            idTokenDto.toString();
-        }
-
-        OAuthExResultForm form = createOAuthExResultForm(
-                "0", null, null, state, code, accessTokenDto.id_token);
+        OAuthExResultForm oAuthExResultForm = createOAuthExResultForm("0", null, null, state, code);
 
         session.invalidate();
-        String urlParam = createRedirectUrlParam(form);
+        String urlParam = createRedirectUrlParam(oAuthExResultForm);
 
         return redirect(optLinePropertyM.get().getExRedirectUri() + urlParam);
     }
 
     private OAuthExResultForm createOAuthExResultForm(String result, String errorCode, String errorDescription,
-            String state, String code, String itToken) {
+            String state, String code) {
 
         OAuthExResultForm oAuthExResultForm = new OAuthExResultForm();
         oAuthExResultForm.setResult(result);
@@ -136,7 +125,6 @@ public class OAuthController extends BaseController {
         oAuthExResultForm.setErrorDescription(errorDescription);
         oAuthExResultForm.setState(state);
         oAuthExResultForm.setCode(code);
-        oAuthExResultForm.setItToken(itToken);
 
         return oAuthExResultForm;
     }

@@ -22,9 +22,6 @@ public class OAuthExResultForm {
     /** code */
     private String code;
 
-    /** itToken */
-    private String itToken;
-
     /**
      * resultの取得。
      *
@@ -113,24 +110,6 @@ public class OAuthExResultForm {
      */
     public void setCode(String code) {
         this.code = code;
-    }
-
-    /**
-     * itTokenの取得。
-     *
-     * @return itToken
-     */
-    public String getItToken() {
-        return this.itToken;
-    }
-
-    /**
-     * itTokenを設定。
-     *
-     * @param itToken itToken
-     */
-    public void setItToken(String itToken) {
-        this.itToken = itToken;
     }
 
 }
